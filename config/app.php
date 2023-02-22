@@ -58,6 +58,9 @@ return [
 
     'asset_url' => env('ASSET_URL'),
 
+     // Custom Entries
+    'news_api_key' => env('NEWS_API_KEY'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

@@ -26,7 +26,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
     // News Module
     Route::group(['prefix' => 'news',], function () {
-        Route::middleware(['jwt-auth'])
+        Route::middleware(['jwt-auth', 'limit.visits'])
             ->group(function () {
                 Route::controller(NewsController::class)->group(function () {
                     Route::get('/', 'getAll');

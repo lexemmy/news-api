@@ -65,5 +65,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
         'jwt-auth' => \App\Http\Middleware\JWTMiddleware::class,
+        'limit.visits' => \App\Http\Middleware\LimitVisits::class,
+
     ];
 }

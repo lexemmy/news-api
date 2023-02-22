@@ -26,9 +26,12 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
     // News Module
     Route::group(['prefix' => 'news',], function () {
-        Route::controller(NewsController::class)->group(function () {
-            Route::get('/', 'getAll');
-            Route::get('/{id}', 'getOne');
-        });
+        Route::middleware(['jwt-auth'])
+            ->group(function () {
+                Route::controller(NewsController::class)->group(function () {
+                    Route::get('/', 'getAll');
+                    Route::get('/{id}', 'getOne');
+                });
+            });
     });
 });

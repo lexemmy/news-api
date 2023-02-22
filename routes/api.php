@@ -23,4 +23,11 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::post('/login', 'login');
         });
     });
+
+     // News Module
+    Route::group(['prefix' => 'news',], function () {
+        Route::controller(NewsController::class)->group(function () {
+            Route::get('/', 'getAll');
+        });
+    });
 });

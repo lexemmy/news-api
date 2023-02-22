@@ -18,6 +18,11 @@ class NewsController extends Controller
             });
         }
 
+        if (request()->has('date')) {
+            $date = request()->date;
+            $news->whereDate('published_at', $date);
+        }
+
         $news = $news->latest()->paginate(20);
 
         return response()->json($news);

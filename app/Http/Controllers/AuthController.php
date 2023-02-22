@@ -31,4 +31,23 @@ class AuthController extends Controller
             'user' => Auth::user()
         ]);
     }
+
+    public function login(Request $request)
+    {
+        Validator::make($request->all(), [
+            'email' => ['required', 'email'],
+            'password' => ['required']
+        ])->validate();
+
+        $credentials = $request->only(['email', 'password']);
+
+        if (!$token = Auth::attempt($credentials)) {
+            return response()->json(['message' => 'Authentication failed'], 401);
+        }
+
+        return response()->json([
+            'token' => $token,
+            'user' => Auth::user()
+        ]);
+    }
 }

@@ -22,4 +22,11 @@ class NewsController extends Controller
 
         return response()->json($news);
     }
+
+    public function getOne($id)
+    {
+        $news = News::findOrFail($id);
+
+        return response()->json($news);
+    }
 }
